@@ -79,7 +79,7 @@ public class OrderService {
     public ApiResponse updateOrder(Order order) {
         ApiResponse apiResponse = new ApiResponse();
         try {
-            Optional<Order> orderOptional = orderRepository.findById(order.getNumber());
+            Optional<Order> orderOptional = orderRepository.findById(order.getOrderNumber());
             if (orderOptional.isPresent()) {
                 orderRepository.save(order);
                 apiResponse.setMessage("Order Successfully updated in the database");

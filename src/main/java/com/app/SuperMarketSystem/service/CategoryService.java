@@ -2,6 +2,7 @@ package com.app.SuperMarketSystem.service;
 
 import com.app.SuperMarketSystem.dto.ApiResponse;
 import com.app.SuperMarketSystem.model.Category;
+import com.app.SuperMarketSystem.model.Product;
 import com.app.SuperMarketSystem.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -120,4 +121,31 @@ public class CategoryService {
         }
     }
 
+    public ApiResponse addProductsInCategory(String categoryId, List<Product> productList) {
+        ApiResponse apiResponse = new ApiResponse();
+        try {
+            Optional<Category> category = categoryRepository.findById(categoryId);
+            if (category.isPresent()) {
+                if (productList.isEmpty()) {
+                    apiResponse.setMessage("The product list is empty");
+                    apiResponse.setData(productList);
+                } else {
+                    category.get().getProducts().addAll(productList);
+                    categoryRepository.save(category.get());
+                    apiResponse.setMessage("Successfully added the products in the category");
+                    apiResponse.setData(category);
+                }
+                apiResponse.setStatus(HttpStatus.OK.value());
+            } else {
+                apiResponse.setMessage("Successfully added the products in the category");
+                apiResponse.setData(null);
+                apiResponse.setStatus(HttpStatus.NOT_FOUND.value());
+            }
+            return apiResponse;
+        } catch (Exception e) {
+            apiResponse.setMessage(e.getMessage());
+            apiResponse.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
+            return apiResponse;
+        }
+    }
 }
