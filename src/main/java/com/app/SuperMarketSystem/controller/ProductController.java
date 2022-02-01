@@ -1,6 +1,7 @@
 package com.app.SuperMarketSystem.controller;
 
 import com.app.SuperMarketSystem.dto.ApiResponse;
+import com.app.SuperMarketSystem.dto.ProductDTO;
 import com.app.SuperMarketSystem.model.Product;
 import com.app.SuperMarketSystem.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,8 +44,13 @@ public class ProductController {
         return productService.getProductById(productId);
     }
 
+/*    @PostMapping("/purchase")
+    public ApiResponse purchase(@RequestParam(name = "quantity") Integer quantity, @RequestParam(name = "userId") Integer userId, @RequestBody List<Product> productList) {
+        return productService.purchaseProducts(quantity, userId, productList);
+    }*/
+
     @PostMapping("/purchase")
-    public ApiResponse purchase(@RequestParam(name = "userId") Integer userId, @RequestBody List<Product> productList) {
+    public ApiResponse purchase(@RequestParam(name = "userId") Integer userId, @RequestBody List<ProductDTO> productList) {
         return productService.purchaseProducts(userId, productList);
     }
 }

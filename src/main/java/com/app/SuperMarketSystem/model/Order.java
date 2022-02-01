@@ -13,8 +13,7 @@ import java.util.UUID;
 @Table(name = "orders")
 public class Order {
     @Id
-    private String number = UUID.randomUUID().toString();
-
+    private String orderNumber = UUID.randomUUID().toString();
     private Double totalPrice;
     private LocalDateTime orderTime;
     private String deliveryStatus;

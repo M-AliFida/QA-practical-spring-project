@@ -14,6 +14,5 @@ public class Product {
     @Id
     private String id = UUID.randomUUID().toString();
     private String name;
-//    private Integer quantityInStock;
-    private double price;
+    private Double price;
 }
