@@ -21,4 +21,9 @@ public class Category {
     @OneToMany(targetEntity = Product.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "category_id", referencedColumnName = "id")
     private List<Product> products = new ArrayList<>();
+
+    public Category(String id, String name) {
+        this.id = id;
+        this.name = name;
+    }
 }

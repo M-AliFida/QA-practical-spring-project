@@ -14,7 +14,6 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class ProductService {
@@ -70,9 +69,9 @@ public class ProductService {
     public ApiResponse deleteProduct(String productId) {
         ApiResponse apiResponse = new ApiResponse();
         try {
-            Optional<Product> product = productRepository.findById(productId);
-            if (product.isPresent()) {
-                productRepository.delete(product.get());
+            Product product = productRepository.getById(productId);
+            if (null != product) {
+                productRepository.delete(product);
                 apiResponse.setStatus(HttpStatus.OK.value());
                 apiResponse.setMessage("Successfully deleted the product from the database");
             } else {
@@ -92,11 +91,11 @@ public class ProductService {
     public ApiResponse updateProduct(Product product) {
         ApiResponse apiResponse = new ApiResponse();
         try {
-            Optional<Product> productOptional = productRepository.findById(product.getId());
-            if (productOptional.isPresent()) {
+            Product existingProduct = productRepository.getById(product.getId());
+            if (null != existingProduct) {
                 productRepository.save(product);
                 apiResponse.setMessage("Product Successfully updated in the database");
-                apiResponse.setData(productOptional);
+                apiResponse.setData(product);
                 apiResponse.setStatus(HttpStatus.OK.value());
             } else {
                 apiResponse.setStatus(HttpStatus.NOT_FOUND.value());
@@ -116,8 +115,8 @@ public class ProductService {
     public ApiResponse getProductById(String productId) {
         ApiResponse apiResponse = new ApiResponse();
         try {
-            Optional<Product> product = productRepository.findById(productId);
-            if (product.isPresent()) {
+            Product product = productRepository.getById(productId);
+            if (null != product) {
                 apiResponse.setStatus(HttpStatus.OK.value());
                 apiResponse.setMessage("Successful");
                 apiResponse.setData(product);
@@ -169,16 +168,16 @@ public class ProductService {
     public ApiResponse purchaseProducts(Integer userId, List<ProductDTO> productsList) {
         ApiResponse apiResponse = new ApiResponse();
         try {
-            Optional<User> user = userRepository.findById(userId);
-            if (user.isPresent()) {
+            User user = userRepository.getById(userId);
+            if (null != user) {
                 Order order = new Order();
                 order.setTotalPrice(0.0);
                 for (ProductDTO product : productsList
                 ) {
-                    Optional<Product> productToBuy = productRepository.findById(product.getProductId());
-                    if (productToBuy.isPresent()) {
-                        order.setTotalPrice(productToBuy.get().getPrice() * product.getQuantityToPurchase() + order.getTotalPrice());
-                        order.getProducts().add(productToBuy.get());
+                    Product productToBuy = productRepository.getById(product.getProductId());
+                    if (null != productToBuy) {
+                        order.setTotalPrice(productToBuy.getPrice() * product.getQuantityToPurchase() + order.getTotalPrice());
+                        order.getProducts().add(productToBuy);
                     } else {
                         apiResponse.setData(null);
                         apiResponse.setStatus(HttpStatus.NOT_FOUND.value());
@@ -188,13 +187,12 @@ public class ProductService {
                 order.setDeliveryStatus("Pending");
                 order.setOrderTime(LocalDateTime.now());
                 orderRepository.save(order);
-                user.get().getOrders().add(order);
+                user.getOrders().add(order);
 
                 apiResponse.setStatus(HttpStatus.OK.value());
                 apiResponse.setMessage("Successfully placed the orders");
                 apiResponse.setData(order);
-
-                userRepository.save(user.get());
+                userRepository.save(user);
             } else {
                 apiResponse.setData(null);
                 apiResponse.setStatus(HttpStatus.NOT_FOUND.value());
