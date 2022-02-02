@@ -38,7 +38,7 @@ class UserServiceTests {
     }
 
     @Test
-    public void getUsersById() {
+    public void getUsersByIdTest() {
         Integer id = 1;
         User user = new User(1, "Test", "User", "test@gmail.com", 20, "password", "address", "phone number");
         when(userRepository.getById(id)).thenReturn(user);
