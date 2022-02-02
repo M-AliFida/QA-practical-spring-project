@@ -5,6 +5,8 @@ import com.app.SuperMarketSystem.model.User;
 import com.app.SuperMarketSystem.service.UserService;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/users")
 public class UserController {
@@ -15,7 +17,7 @@ public class UserController {
     }
 
     @GetMapping("/list")
-    public ApiResponse list() {
+    public List<User> list() {
         return userService.findAllUsers();
     }
 
@@ -35,7 +37,7 @@ public class UserController {
     }
 
     @GetMapping("/getBy/{id}")
-    public ApiResponse getById(@PathVariable(name = "id") Integer userId) {
+    public User getById(@PathVariable(name = "id") Integer userId) {
         return userService.getUserById(userId);
     }
 
