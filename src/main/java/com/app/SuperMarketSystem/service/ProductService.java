@@ -32,14 +32,14 @@ public class ProductService {
     public ApiResponse findAllProducts() {
         ApiResponse apiResponse = new ApiResponse();
         try {
-            List<Product> categoriesList = productRepository.findAll();
-            if (categoriesList.isEmpty()) {
+            List<Product> productList = productRepository.findAll();
+            if (productList.isEmpty()) {
                 apiResponse.setMessage("There is no product in the database");
                 apiResponse.setStatus(HttpStatus.NOT_FOUND.value());
                 apiResponse.setData(null);
             } else {
                 apiResponse.setMessage("Successfully fetched the products from the database");
-                apiResponse.setData(categoriesList);
+                apiResponse.setData(productList);
                 apiResponse.setStatus(HttpStatus.OK.value());
             }
             return apiResponse;

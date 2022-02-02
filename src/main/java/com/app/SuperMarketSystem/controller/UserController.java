@@ -33,7 +33,7 @@ public class UserController {
 
     @DeleteMapping("/delete/{id}")
     public ApiResponse delete(@PathVariable(name = "id") Integer userId) {
-        return userService.deleteUser(userId);
+        return userService.deleteUserById(userId);
     }
 
     @GetMapping("/getBy/{id}")
