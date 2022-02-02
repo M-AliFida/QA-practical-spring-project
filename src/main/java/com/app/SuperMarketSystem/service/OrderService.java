@@ -8,7 +8,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class OrderService {
@@ -58,9 +57,9 @@ public class OrderService {
     public ApiResponse deleteOrder(String orderId) {
         ApiResponse apiResponse = new ApiResponse();
         try {
-            Optional<Order> order = orderRepository.findById(orderId);
-            if (order.isPresent()) {
-                orderRepository.delete(order.get());
+            Order order = orderRepository.getById(orderId);
+            if (null != order) {
+                orderRepository.delete(order);
                 apiResponse.setStatus(HttpStatus.OK.value());
                 apiResponse.setMessage("Successfully deleted the order from the database");
             } else {
@@ -79,11 +78,11 @@ public class OrderService {
     public ApiResponse updateOrder(Order order) {
         ApiResponse apiResponse = new ApiResponse();
         try {
-            Optional<Order> orderOptional = orderRepository.findById(order.getOrderNumber());
-            if (orderOptional.isPresent()) {
+            Order orderOptional = orderRepository.getById(order.getOrderNumber());
+            if (null != orderOptional) {
                 orderRepository.save(order);
                 apiResponse.setMessage("Order Successfully updated in the database");
-                apiResponse.setData(orderOptional);
+                apiResponse.setData(order);
                 apiResponse.setStatus(HttpStatus.OK.value());
             } else {
                 apiResponse.setStatus(HttpStatus.NOT_FOUND.value());
@@ -99,11 +98,11 @@ public class OrderService {
         }
     }
 
-    public ApiResponse getOrderById(String orderId) {
+    public ApiResponse getOrderByOrderNumber(String orderNumber) {
         ApiResponse apiResponse = new ApiResponse();
         try {
-            Optional<Order> order = orderRepository.findById(orderId);
-            if (order.isPresent()) {
+            Order order = orderRepository.getById(orderNumber);
+            if (null != order) {
                 apiResponse.setStatus(HttpStatus.OK.value());
                 apiResponse.setMessage("Successful");
                 apiResponse.setData(order);

@@ -59,10 +59,10 @@ public class CategoryService {
     public ApiResponse deleteCategory(String categoryId) {
         ApiResponse apiResponse = new ApiResponse();
         try {
-            Optional<Category> category = categoryRepository.findById(categoryId);
-            if (category.isPresent()) {
-                category.get().setProducts(null);
-                categoryRepository.delete(category.get());
+            Category category = categoryRepository.getById(categoryId);
+            if (null != category) {
+                category.setProducts(null);
+                categoryRepository.delete(category);
                 apiResponse.setStatus(HttpStatus.OK.value());
                 apiResponse.setMessage("Successfully deleted the category from the database");
             } else {
@@ -81,11 +81,11 @@ public class CategoryService {
     public ApiResponse updateCategory(Category category) {
         ApiResponse apiResponse = new ApiResponse();
         try {
-            Optional<Category> categoryOptional = categoryRepository.findById(category.getId());
-            if (categoryOptional.isPresent()) {
+            Category existingCategory = categoryRepository.getById(category.getId());
+            if (null != existingCategory) {
                 categoryRepository.save(category);
                 apiResponse.setMessage("Category Successfully updated in the database");
-                apiResponse.setData(categoryOptional);
+                apiResponse.setData(category);
                 apiResponse.setStatus(HttpStatus.OK.value());
             } else {
                 apiResponse.setStatus(HttpStatus.NOT_FOUND.value());
@@ -104,8 +104,8 @@ public class CategoryService {
     public ApiResponse getCategoryById(String categoryId) {
         ApiResponse apiResponse = new ApiResponse();
         try {
-            Optional<Category> category = categoryRepository.findById(categoryId);
-            if (category.isPresent()) {
+            Category category = categoryRepository.getById(categoryId);
+            if (null != category) {
                 apiResponse.setStatus(HttpStatus.OK.value());
                 apiResponse.setMessage("Successful");
                 apiResponse.setData(category);
@@ -125,14 +125,14 @@ public class CategoryService {
     public ApiResponse addProductsInCategory(String categoryId, List<Product> productList) {
         ApiResponse apiResponse = new ApiResponse();
         try {
-            Optional<Category> category = categoryRepository.findById(categoryId);
-            if (category.isPresent()) {
+            Category category = categoryRepository.getById(categoryId);
+            if (null != category) {
                 if (productList.isEmpty()) {
                     apiResponse.setMessage("The product list is empty");
                     apiResponse.setData(productList);
                 } else {
-                    category.get().getProducts().addAll(productList);
-                    categoryRepository.save(category.get());
+                    category.getProducts().addAll(productList);
+                    categoryRepository.save(category);
                     apiResponse.setMessage("Successfully added the products in the category");
                     apiResponse.setData(category);
                 }
