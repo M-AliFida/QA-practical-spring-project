@@ -61,6 +61,7 @@ public class CategoryService {
         try {
             Optional<Category> category = categoryRepository.findById(categoryId);
             if (category.isPresent()) {
+                category.get().setProducts(null);
                 categoryRepository.delete(category.get());
                 apiResponse.setStatus(HttpStatus.OK.value());
                 apiResponse.setMessage("Successfully deleted the category from the database");
