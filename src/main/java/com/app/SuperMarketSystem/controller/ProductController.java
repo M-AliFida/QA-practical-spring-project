@@ -44,11 +44,6 @@ public class ProductController {
         return productService.getProductById(productId);
     }
 
-/*    @PostMapping("/purchase")
-    public ApiResponse purchase(@RequestParam(name = "quantity") Integer quantity, @RequestParam(name = "userId") Integer userId, @RequestBody List<Product> productList) {
-        return productService.purchaseProducts(quantity, userId, productList);
-    }*/
-
     @PostMapping("/purchase")
     public ApiResponse purchase(@RequestParam(name = "userId") Integer userId, @RequestBody List<ProductDTO> productList) {
         return productService.purchaseProducts(userId, productList);

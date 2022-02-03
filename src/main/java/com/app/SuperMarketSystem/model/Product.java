@@ -1,8 +1,6 @@
 package com.app.SuperMarketSystem.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -10,7 +8,8 @@ import javax.persistence.Table;
 import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
-@Data
+@Getter
+@Setter
 @Entity
 @Table(name = "products")
 public class Product {
