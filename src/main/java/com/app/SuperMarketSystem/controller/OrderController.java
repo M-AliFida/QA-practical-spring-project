@@ -38,6 +38,6 @@ public class OrderController {
 
     @GetMapping("/getBy/{id}")
     public ApiResponse getById(@PathVariable(name = "id") String orderId) {
-        return orderService.getOrderById(orderId);
+        return orderService.getOrderByOrderNumber(orderId);
     }
 }

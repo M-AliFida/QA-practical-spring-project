@@ -35,10 +35,6 @@ class ProductServiceTest {
     private UserRepository userRepository;
 
     @Test
-    void contextLoads() {
-    }
-
-    @Test
     public void getAllProductsTest() {
         when(productRepository.findAll()).thenReturn(Stream.of(new Product("Product Id", "Product name", 1000.0)).collect(Collectors.toList()));
         assertNotNull(productService.findAllProducts().getData());
@@ -60,8 +56,8 @@ class ProductServiceTest {
 
     @Test
     public void updateProductTest() {
-        Product oldProduct = new Product("Product Id", "Product name", 1000.0);
-        Product updatedProduct = new Product("Updated Product Id", "Updated Product name", 2000.0);
+        Product oldProduct = new Product("ProductId", "Product name", 1000.0);
+        Product updatedProduct = new Product("ProductId", "Updated Product name", 2000.0);
 
         when(productRepository.getById(oldProduct.getId())).thenReturn(oldProduct);
         assertEquals(200, productService.updateProduct(updatedProduct).getStatus());
