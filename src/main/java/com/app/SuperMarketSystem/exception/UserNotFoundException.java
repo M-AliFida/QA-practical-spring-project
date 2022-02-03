@@ -1,46 +1,14 @@
-package com.app.SuperMarketSystem.controller;
+package com.app.SuperMarketSystem.exception;
 
-import com.app.SuperMarketSystem.dto.ApiResponse;
-import com.app.SuperMarketSystem.model.User;
-import com.app.SuperMarketSystem.service.UserService;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 
-@RestController
-@RequestMapping("/users")
-public class UserController {
-    private final UserService userService;
-
-    public UserController(UserService userService) {
-        this.userService = userService;
-    }
-
-    @GetMapping("/list")
-    public ApiResponse list() {
-        return userService.findAllUsers();
-    }
-
-    @PostMapping("/save")
-    public ApiResponse save(@RequestBody User user) {
-        return userService.addNewUser(user);
-    }
-
-    @PutMapping("/update")
-    public ApiResponse update(@RequestBody User user) {
-        return userService.updateUser(user);
-    }
-
-    @DeleteMapping("/delete/{id}")
-    public ApiResponse delete(@PathVariable(name = "id") Integer userId) {
-        return userService.deleteUserById(userId);
-    }
-
-    @GetMapping("/getBy/{id}")
-    public ApiResponse getById(@PathVariable(name = "id") Integer userId) {
-        return userService.getUserById(userId);
-    }
-
-    @GetMapping("/getOrdersByUserId/{id}")
-    public ApiResponse getOrdersByUserId(@PathVariable(name = "id") Integer userId) {
-        return userService.getOrdersByUserId(userId);
+@ControllerAdvice
+public class UserNotFoundException {
+    @ExceptionHandler(RuntimeException.class)
+    public ResponseEntity<Object> userNotFound(String message) {
+        return new ResponseEntity<>(message, HttpStatus.NOT_FOUND);
     }
 }

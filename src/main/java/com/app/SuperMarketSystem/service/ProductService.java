@@ -134,37 +134,6 @@ public class ProductService {
         }
     }
 
-/*    public ApiResponse purchaseProducts(Integer quantity, Integer userId, List<Product> productsList) {
-        ApiResponse apiResponse = new ApiResponse();
-        try {
-            Optional<User> user = userRepository.findById(userId);
-            if (user.isPresent()) {
-                Order order = new Order();
-                for (Product product : productsList
-                ) {
-                    order.setTotalPrice(product.getPrice() + order.getTotalPrice());
-                    order.getProducts().add(product);
-                }
-                order.setDeliveryStatus("Pending");
-                order.setOrderTime(LocalDateTime.now());
-                orderRepository.save(order);
-                user.get().getOrders().add(order);
-                apiResponse.setData(order);
-                userRepository.save(user.get());
-            } else {
-                apiResponse.setData(null);
-                apiResponse.setStatus(HttpStatus.NOT_FOUND.value());
-                apiResponse.setMessage("There is no user against this Id in the database");
-            }
-            return apiResponse;
-        } catch (Exception e) {
-            apiResponse.setData(null);
-            apiResponse.setMessage(e.getMessage());
-            apiResponse.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
-            return apiResponse;
-        }
-    }*/
-
     public ApiResponse purchaseProducts(Integer userId, List<ProductDTO> productsList) {
         ApiResponse apiResponse = new ApiResponse();
         try {
