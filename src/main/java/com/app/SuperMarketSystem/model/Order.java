@@ -11,11 +11,10 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
-
-@NoArgsConstructor
-@AllArgsConstructor
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "orders")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
@@ -34,5 +33,5 @@ public class Order {
         this.totalPrice = totalPrice;
         this.orderTime = orderTime;
         this.deliveryStatus = deliveryStatus;
-    }   
+    }
 }
