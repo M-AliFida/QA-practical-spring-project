@@ -88,14 +88,14 @@ public class ProductService {
         }
     }
 
-    public ApiResponse updateProduct(Product product) {
+    public ApiResponse updateProduct(Product updatedProduct) {
         ApiResponse apiResponse = new ApiResponse();
         try {
-            Product existingProduct = productRepository.getById(product.getId());
+            Product existingProduct = productRepository.getById(updatedProduct.getId());
             if (null != existingProduct) {
-                productRepository.save(product);
+                productRepository.save(updatedProduct);
                 apiResponse.setMessage("Product Successfully updated in the database");
-                apiResponse.setData(product);
+                apiResponse.setData(updatedProduct);
                 apiResponse.setStatus(HttpStatus.OK.value());
             } else {
                 apiResponse.setStatus(HttpStatus.NOT_FOUND.value());

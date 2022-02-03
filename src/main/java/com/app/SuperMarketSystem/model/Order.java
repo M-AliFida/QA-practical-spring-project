@@ -34,5 +34,5 @@ public class Order {
         this.totalPrice = totalPrice;
         this.orderTime = orderTime;
         this.deliveryStatus = deliveryStatus;
-    }
+    }   
 }

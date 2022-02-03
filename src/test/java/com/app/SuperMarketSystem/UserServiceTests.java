@@ -76,7 +76,6 @@ class UserServiceTests {
     @Test
     public void updateUserTest() {
         User oldUser = new User(1, "Test", "User", "test@gmail.com", 20, "password", "address", "phone number");
-
         User updatedUser = new User(1, "TestUpdated", "User", "test@gmail.com", 20, "password", "address", "phone number");
         when(userRepository.getById(updatedUser.getId())).thenReturn(oldUser);
         assertEquals(200, userService.updateUser(updatedUser).getStatus());
@@ -90,7 +89,6 @@ class UserServiceTests {
         Order order = new Order("Order Id", 10000.0, LocalDateTime.now(), "pending");
         order.getProducts().add(product);
         user.getOrders().add(order);
-
         when(userRepository.getById(user.getId())).thenReturn(user);
         assertEquals(user.getOrders(), userService.getOrdersByUserId(user.getId()).getData());
     }
