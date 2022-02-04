@@ -1,0 +1,1 @@
+{"status":200,"message":"Successfully fetched products from the database","data":[{"id":"5ef6067b-f301-40a6-8ceb-7748a3616884","name":"Robotos","price":100.0},{"id":"ba81cd8e-81ab-4149-a8c4-6be6df971d28","name":"Hbots","price":1000.0},{"id":"e0ec7874-72a1-49c9-ad85-52075825a110","name":"Bored Ape Yacht Club","price":10000.0}]}

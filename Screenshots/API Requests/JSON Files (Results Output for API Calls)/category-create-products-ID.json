@@ -1,0 +1,1 @@
+{"status":200,"message":"Successfully added products within the category","data":{"id":"7ad2f647-22b4-47af-828a-1f5286753bef","name":"Groceries","products":[{"id":"4cfed7f5-73b3-4223-a755-2976bde48b0a","name":"Eggs","price":5.0},{"id":"875be4df-2979-4fc6-b1db-6ead387f4839","name":"Milk","price":2.5}]}}

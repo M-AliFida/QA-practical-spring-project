@@ -1,0 +1,1 @@
+{"status":200,"message":"Successfully placed the orders","data":{"orderNumber":"9c62bf4c-30be-4101-8305-3786f42758d0","totalPrice":1120.0,"orderTime":"2022-02-04T07:21:59.377672","deliveryStatus":"Pending","products":[{"id":"4cfed7f5-73b3-4223-a755-2976bde48b0a","name":"Eggs","price":5.0},{"id":"ba81cd8e-81ab-4149-a8c4-6be6df971d28","name":"Hbots","price":1000.0}]}}
