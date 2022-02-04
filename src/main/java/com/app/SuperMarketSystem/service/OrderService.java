@@ -23,11 +23,11 @@ public class OrderService {
         try {
             List<Order> categoriesList = orderRepository.findAll();
             if (categoriesList.isEmpty()) {
-                apiResponse.setMessage("There is no order in the database");
+                apiResponse.setMessage("No orders found within the database");
                 apiResponse.setStatus(HttpStatus.NOT_FOUND.value());
                 apiResponse.setData(null);
             } else {
-                apiResponse.setMessage("Successfully fetched the orders from the database");
+                apiResponse.setMessage("Successfully fetched orders from the database");
                 apiResponse.setData(categoriesList);
                 apiResponse.setStatus(HttpStatus.OK.value());
             }
@@ -43,7 +43,7 @@ public class OrderService {
         ApiResponse apiResponse = new ApiResponse();
         try {
             orderRepository.save(order);
-            apiResponse.setMessage("Successfully added order in the database");
+            apiResponse.setMessage("Successfully added order within the database");
             apiResponse.setData(order);
             apiResponse.setStatus(HttpStatus.OK.value());
             return apiResponse;
@@ -61,10 +61,10 @@ public class OrderService {
             if (null != order) {
                 orderRepository.delete(order);
                 apiResponse.setStatus(HttpStatus.OK.value());
-                apiResponse.setMessage("Successfully deleted the order from the database");
+                apiResponse.setMessage("Successfully deleted order from the database");
             } else {
                 apiResponse.setStatus(HttpStatus.NOT_FOUND.value());
-                apiResponse.setMessage("There is no order against this ID");
+                apiResponse.setMessage("No such order found against this ID");
             }
             apiResponse.setData(null);
             return apiResponse;
@@ -81,12 +81,12 @@ public class OrderService {
             Order orderOptional = orderRepository.getById(order.getOrderNumber());
             if (null != orderOptional) {
                 orderRepository.save(order);
-                apiResponse.setMessage("Order Successfully updated in the database");
+                apiResponse.setMessage("Successfully updated order within the database");
                 apiResponse.setData(order);
                 apiResponse.setStatus(HttpStatus.OK.value());
             } else {
                 apiResponse.setStatus(HttpStatus.NOT_FOUND.value());
-                apiResponse.setMessage("There is no order against this ID");
+                apiResponse.setMessage("No such order found against this ID");
                 apiResponse.setData(null);
             }
             return apiResponse;
@@ -109,7 +109,7 @@ public class OrderService {
             } else {
                 apiResponse.setData(null);
                 apiResponse.setStatus(HttpStatus.NOT_FOUND.value());
-                apiResponse.setMessage("There is no order in the database");
+                apiResponse.setMessage("No such order found within the database");
             }
             return apiResponse;
         } catch (Exception e) {

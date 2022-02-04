@@ -24,11 +24,11 @@ public class UserService {
         try {
             List<User> userList = userRepository.findAll();
             if (userList.isEmpty()) {
-                apiResponse.setMessage("There is no user in the database");
+                apiResponse.setMessage("No users found within the database");
                 apiResponse.setStatus(HttpStatus.NOT_FOUND.value());
                 apiResponse.setData(null);
             } else {
-                apiResponse.setMessage("Successfully fetched the users from the database");
+                apiResponse.setMessage("Successfully fetched users from within database");
                 apiResponse.setData(userList);
                 apiResponse.setStatus(HttpStatus.OK.value());
             }
@@ -44,7 +44,7 @@ public class UserService {
         ApiResponse apiResponse = new ApiResponse();
         try {
             userRepository.save(user);
-            apiResponse.setMessage("Successfully added user in the database");
+            apiResponse.setMessage("Successfully added user within the database");
             apiResponse.setData(user);
             apiResponse.setStatus(HttpStatus.OK.value());
             return apiResponse;
@@ -63,10 +63,10 @@ public class UserService {
                 user.setOrders(null);
                 userRepository.delete(user);
                 apiResponse.setStatus(HttpStatus.OK.value());
-                apiResponse.setMessage("Successfully deleted the user from the database");
+                apiResponse.setMessage("Successfully deleted user from within the database");
             } else {
                 apiResponse.setStatus(HttpStatus.NOT_FOUND.value());
-                apiResponse.setMessage("There is no user against this ID");
+                apiResponse.setMessage("No such user found against this ID");
             }
             apiResponse.setData(null);
             return apiResponse;
@@ -82,7 +82,7 @@ public class UserService {
         try {
             userRepository.delete(user);
             apiResponse.setStatus(HttpStatus.OK.value());
-            apiResponse.setMessage("Successfully deleted the user from the database");
+            apiResponse.setMessage("Successfully deleted user from within the database");
             apiResponse.setData(null);
             return apiResponse;
         } catch (Exception e) {
@@ -98,12 +98,12 @@ public class UserService {
             User existingUser = userRepository.getById(updatedUser.getId());
             if (null != existingUser) {
                 userRepository.save(updatedUser);
-                apiResponse.setMessage("User Successfully updated in the database");
+                apiResponse.setMessage("Successfully updated user within the database");
                 apiResponse.setData(updatedUser);
                 apiResponse.setStatus(HttpStatus.OK.value());
             } else {
                 apiResponse.setStatus(HttpStatus.NOT_FOUND.value());
-                apiResponse.setMessage("There is no user against this ID");
+                apiResponse.setMessage("No such user found against this ID");
                 apiResponse.setData(null);
             }
             return apiResponse;
@@ -126,7 +126,7 @@ public class UserService {
             } else {
                 apiResponse.setData(null);
                 apiResponse.setStatus(HttpStatus.NOT_FOUND.value());
-                apiResponse.setMessage("There is no user in the database");
+                apiResponse.setMessage("No such user found within the database");
             }
             return apiResponse;
         } catch (Exception e) {
@@ -144,16 +144,16 @@ public class UserService {
                 List<Order> orders = user.getOrders();
                 if (orders.isEmpty()) {
                     apiResponse.setStatus(HttpStatus.NOT_FOUND.value());
-                    apiResponse.setMessage("There are no orders made yet by this user");
+                    apiResponse.setMessage("No orders made yet by this user");
                 } else {
                     apiResponse.setStatus(HttpStatus.OK.value());
-                    apiResponse.setMessage("These are the orders that this user made");
+                    apiResponse.setMessage("These are the orders made by the user");
                 }
                 apiResponse.setData(orders);
             } else {
                 apiResponse.setData(null);
                 apiResponse.setStatus(HttpStatus.NOT_FOUND.value());
-                apiResponse.setMessage("There is no user against this id in the database");
+                apiResponse.setMessage("No such user found against this ID within the database");
             }
             return apiResponse;
         } catch (Exception e) {
