@@ -83,6 +83,6 @@ class CategoryServiceTest {
         productList.add(product);
 
         assertEquals(200, categoryService.addProductsInCategory(id, productList).getStatus());
-        assertEquals("Successfully added the products in the category", categoryService.addProductsInCategory(id, productList).getMessage());
+        assertEquals("Successfully added products within the category", categoryService.addProductsInCategory(id, productList).getMessage());
     }
 }

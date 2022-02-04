@@ -52,6 +52,8 @@ class UserServiceTests {
         assertEquals(user, userService.addNewUser(user).getData());
     }
 
+    // three different methods to test of user is successfully deleted.
+
     @Test
     public void deleteUserByIdTest1() {
         User user = new User(1, "Test", "User", "test@gmail.com", 20, "password", "address", "phone number");

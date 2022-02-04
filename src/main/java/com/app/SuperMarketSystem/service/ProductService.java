@@ -33,11 +33,11 @@ public class ProductService {
         try {
             List<Product> productList = productRepository.findAll();
             if (productList.isEmpty()) {
-                apiResponse.setMessage("There is no product in the database");
+                apiResponse.setMessage("No products found within the database");
                 apiResponse.setStatus(HttpStatus.NOT_FOUND.value());
                 apiResponse.setData(null);
             } else {
-                apiResponse.setMessage("Successfully fetched the products from the database");
+                apiResponse.setMessage("Successfully fetched products from the database");
                 apiResponse.setData(productList);
                 apiResponse.setStatus(HttpStatus.OK.value());
             }
@@ -54,7 +54,7 @@ public class ProductService {
         ApiResponse apiResponse = new ApiResponse();
         try {
             productRepository.save(product);
-            apiResponse.setMessage("Successfully added product in the database");
+            apiResponse.setMessage("Successfully added product within the database");
             apiResponse.setData(product);
             apiResponse.setStatus(HttpStatus.OK.value());
             return apiResponse;
@@ -73,10 +73,10 @@ public class ProductService {
             if (null != product) {
                 productRepository.delete(product);
                 apiResponse.setStatus(HttpStatus.OK.value());
-                apiResponse.setMessage("Successfully deleted the product from the database");
+                apiResponse.setMessage("Successfully deleted product from the database");
             } else {
                 apiResponse.setStatus(HttpStatus.NOT_FOUND.value());
-                apiResponse.setMessage("There is no product against this ID");
+                apiResponse.setMessage("No such product found against this ID");
             }
             apiResponse.setData(null);
             return apiResponse;
@@ -94,12 +94,12 @@ public class ProductService {
             Product existingProduct = productRepository.getById(updatedProduct.getId());
             if (null != existingProduct) {
                 productRepository.save(updatedProduct);
-                apiResponse.setMessage("Product Successfully updated in the database");
+                apiResponse.setMessage("Successfully updated product within the database");
                 apiResponse.setData(updatedProduct);
                 apiResponse.setStatus(HttpStatus.OK.value());
             } else {
                 apiResponse.setStatus(HttpStatus.NOT_FOUND.value());
-                apiResponse.setMessage("There is no product against this ID");
+                apiResponse.setMessage("No such product found against this ID");
                 apiResponse.setData(null);
             }
             return apiResponse;
@@ -123,7 +123,7 @@ public class ProductService {
             } else {
                 apiResponse.setData(null);
                 apiResponse.setStatus(HttpStatus.NOT_FOUND.value());
-                apiResponse.setMessage("There is no product in the database");
+                apiResponse.setMessage("No such product found within the database");
             }
             return apiResponse;
         } catch (Exception e) {
@@ -150,7 +150,7 @@ public class ProductService {
                     } else {
                         apiResponse.setData(null);
                         apiResponse.setStatus(HttpStatus.NOT_FOUND.value());
-                        apiResponse.setMessage("There is no product against " + product.getProductId() + " in the database");
+                        apiResponse.setMessage("No such product found against " + product.getProductId() + " within the database");
                     }
                 }
                 order.setDeliveryStatus("Pending");
@@ -165,7 +165,7 @@ public class ProductService {
             } else {
                 apiResponse.setData(null);
                 apiResponse.setStatus(HttpStatus.NOT_FOUND.value());
-                apiResponse.setMessage("There is no user against this Id in the database");
+                apiResponse.setMessage("No such user found against this ID within the database");
             }
             return apiResponse;
         } catch (Exception e) {

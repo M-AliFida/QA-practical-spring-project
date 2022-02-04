@@ -24,11 +24,11 @@ public class CategoryService {
         try {
             List<Category> categoriesList = categoryRepository.findAll();
             if (categoriesList.isEmpty()) {
-                apiResponse.setMessage("There is no category in the database");
+                apiResponse.setMessage("No categories found within the database");
                 apiResponse.setStatus(HttpStatus.NOT_FOUND.value());
                 apiResponse.setData(null);
             } else {
-                apiResponse.setMessage("Successfully fetched the users from the database");
+                apiResponse.setMessage("Successfully fetched categories from the database");
                 apiResponse.setData(categoriesList);
                 apiResponse.setStatus(HttpStatus.OK.value());
             }
@@ -63,10 +63,10 @@ public class CategoryService {
                 category.setProducts(null);
                 categoryRepository.delete(category);
                 apiResponse.setStatus(HttpStatus.OK.value());
-                apiResponse.setMessage("Successfully deleted the category from the database");
+                apiResponse.setMessage("Successfully deleted category from the database");
             } else {
                 apiResponse.setStatus(HttpStatus.NOT_FOUND.value());
-                apiResponse.setMessage("There is no category against this ID");
+                apiResponse.setMessage("No such category found against this ID");
             }
             apiResponse.setData(null);
             return apiResponse;
@@ -83,12 +83,12 @@ public class CategoryService {
             Category existingCategory = categoryRepository.getById(category.getId());
             if (null != existingCategory) {
                 categoryRepository.save(category);
-                apiResponse.setMessage("Category Successfully updated in the database");
+                apiResponse.setMessage("Successfully updated category within the database");
                 apiResponse.setData(category);
                 apiResponse.setStatus(HttpStatus.OK.value());
             } else {
                 apiResponse.setStatus(HttpStatus.NOT_FOUND.value());
-                apiResponse.setMessage("There is no category against this ID");
+                apiResponse.setMessage("No such category found against this ID");
                 apiResponse.setData(null);
             }
             return apiResponse;
@@ -111,7 +111,7 @@ public class CategoryService {
             } else {
                 apiResponse.setData(null);
                 apiResponse.setStatus(HttpStatus.NOT_FOUND.value());
-                apiResponse.setMessage("There is no category in the database");
+                apiResponse.setMessage("No such category found within the database");
             }
             return apiResponse;
         } catch (Exception e) {
@@ -132,12 +132,12 @@ public class CategoryService {
                 } else {
                     category.getProducts().addAll(productList);
                     categoryRepository.save(category);
-                    apiResponse.setMessage("Successfully added the products in the category");
+                    apiResponse.setMessage("Successfully added products within the category");
                     apiResponse.setData(category);
                 }
                 apiResponse.setStatus(HttpStatus.OK.value());
             } else {
-                apiResponse.setMessage("Successfully added the products in the category");
+                apiResponse.setMessage("No such category found within the database");
                 apiResponse.setData(null);
                 apiResponse.setStatus(HttpStatus.NOT_FOUND.value());
             }
