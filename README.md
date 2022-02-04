@@ -259,6 +259,8 @@ The overall test coverage (including Class %, Method % and Line %) of all the te
 
 > Why are we doing this?
 
+The project helps to consolidate the learning material taught during the QA Academy Software Development Bootcamp through practical application. There is tremendous value in learning how to implement a REST API, as it an helps me to upskill the basic principles, fundamentals, syntax and applications of Java that I have acquired throughout the Bootcamp.
+
 > How I expected the challenge to go
 
 > What went well? / What didn't go as planned?
