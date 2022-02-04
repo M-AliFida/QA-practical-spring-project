@@ -1,0 +1,156 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > ProductController</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/highlight-idea.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.app.SuperMarketSystem.controller</a>
+</div>
+
+<h1>Coverage Summary for Class: ProductController (com.app.SuperMarketSystem.controller)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">ProductController</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    14.3%
+  </span>
+  <span class="absValue">
+    (1/7)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    25%
+  </span>
+  <span class="absValue">
+    (2/8)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package com.app.SuperMarketSystem.controller;
+<i class="no-highlight">2</i>&nbsp;
+<i class="no-highlight">3</i>&nbsp;import com.app.SuperMarketSystem.dto.ApiResponse;
+<i class="no-highlight">4</i>&nbsp;import com.app.SuperMarketSystem.dto.ProductDTO;
+<i class="no-highlight">5</i>&nbsp;import com.app.SuperMarketSystem.model.Product;
+<i class="no-highlight">6</i>&nbsp;import com.app.SuperMarketSystem.service.ProductService;
+<i class="no-highlight">7</i>&nbsp;import org.springframework.beans.factory.annotation.Autowired;
+<i class="no-highlight">8</i>&nbsp;import org.springframework.web.bind.annotation.*;
+<i class="no-highlight">9</i>&nbsp;
+<i class="no-highlight">10</i>&nbsp;import java.util.List;
+<i class="no-highlight">11</i>&nbsp;
+<i class="no-highlight">12</i>&nbsp;@RestController
+<i class="no-highlight">13</i>&nbsp;@RequestMapping(&quot;/products&quot;)
+<i class="no-highlight">14</i>&nbsp;public class ProductController {
+<i class="no-highlight">15</i>&nbsp;    private final ProductService productService;
+<i class="no-highlight">16</i>&nbsp;
+<i class="no-highlight">17</i>&nbsp;    @Autowired
+<b class="fc"><i class="no-highlight">18</i>&nbsp;    public ProductController(ProductService productService) {</b>
+<b class="fc"><i class="no-highlight">19</i>&nbsp;        this.productService = productService;</b>
+<i class="no-highlight">20</i>&nbsp;    }
+<i class="no-highlight">21</i>&nbsp;
+<i class="no-highlight">22</i>&nbsp;    @GetMapping(&quot;/list&quot;)
+<i class="no-highlight">23</i>&nbsp;    public ApiResponse list() {
+<b class="nc"><i class="no-highlight">24</i>&nbsp;        return productService.findAllProducts();</b>
+<i class="no-highlight">25</i>&nbsp;    }
+<i class="no-highlight">26</i>&nbsp;
+<i class="no-highlight">27</i>&nbsp;    @PostMapping(&quot;/save&quot;)
+<i class="no-highlight">28</i>&nbsp;    public ApiResponse save(@RequestBody Product product) {
+<b class="nc"><i class="no-highlight">29</i>&nbsp;        return productService.addProduct(product);</b>
+<i class="no-highlight">30</i>&nbsp;    }
+<i class="no-highlight">31</i>&nbsp;
+<i class="no-highlight">32</i>&nbsp;    @PutMapping(&quot;/update&quot;)
+<i class="no-highlight">33</i>&nbsp;    public ApiResponse update(@RequestBody Product product) {
+<b class="nc"><i class="no-highlight">34</i>&nbsp;        return productService.updateProduct(product);</b>
+<i class="no-highlight">35</i>&nbsp;    }
+<i class="no-highlight">36</i>&nbsp;
+<i class="no-highlight">37</i>&nbsp;    @DeleteMapping(&quot;/delete/{id}&quot;)
+<i class="no-highlight">38</i>&nbsp;    public ApiResponse delete(@PathVariable(name = &quot;id&quot;) String productId) {
+<b class="nc"><i class="no-highlight">39</i>&nbsp;        return productService.deleteProduct(productId);</b>
+<i class="no-highlight">40</i>&nbsp;    }
+<i class="no-highlight">41</i>&nbsp;
+<i class="no-highlight">42</i>&nbsp;    @GetMapping(&quot;/getBy/{id}&quot;)
+<i class="no-highlight">43</i>&nbsp;    public ApiResponse getById(@PathVariable(name = &quot;id&quot;) String productId) {
+<b class="nc"><i class="no-highlight">44</i>&nbsp;        return productService.getProductById(productId);</b>
+<i class="no-highlight">45</i>&nbsp;    }
+<i class="no-highlight">46</i>&nbsp;
+<i class="no-highlight">47</i>&nbsp;    @PostMapping(&quot;/purchase&quot;)
+<i class="no-highlight">48</i>&nbsp;    public ApiResponse purchase(@RequestParam(name = &quot;userId&quot;) Integer userId, @RequestBody List&lt;ProductDTO&gt; productList) {
+<b class="nc"><i class="no-highlight">49</i>&nbsp;        return productService.purchaseProducts(userId, productList);</b>
+<i class="no-highlight">50</i>&nbsp;    }
+<i class="no-highlight">51</i>&nbsp;}
+</div>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+        var codeBlock = document.getElementById('sourceCode');
+
+        if (codeBlock) {
+            hljs.highlightBlock(codeBlock);
+        }
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-02-04 14:06</div>
+</div>
+</body>
+</html>

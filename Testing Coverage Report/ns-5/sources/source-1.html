@@ -1,0 +1,161 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > Category</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/highlight-idea.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.app.SuperMarketSystem.model</a>
+</div>
+
+<h1>Coverage Summary for Class: Category (com.app.SuperMarketSystem.model)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Category</td>
+<td class="coverageStat">
+  <span class="percent">
+    50%
+  </span>
+  <span class="absValue">
+    (3/6)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    72.7%
+  </span>
+  <span class="absValue">
+    (8/11)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">Category$HibernateProxy$2FE4Ewxl</td>
+  </tr>
+  <tr>
+    <td class="name">Category$HibernateProxy$CqdnW8K1</td>
+  </tr>
+  <tr>
+    <td class="name">Category$HibernateProxy$dW6lgnME</td>
+  </tr>
+  <tr>
+    <td class="name">Category$HibernateProxy$usX4cpjB</td>
+  </tr>
+  <tr>
+    <td class="name">Category$HibernateProxy$YtE9UPWw</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    50%
+  </span>
+  <span class="absValue">
+    (3/6)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    72.7%
+  </span>
+  <span class="absValue">
+    (8/11)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package com.app.SuperMarketSystem.model;
+<i class="no-highlight">2</i>&nbsp;
+<i class="no-highlight">3</i>&nbsp;import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+<i class="no-highlight">4</i>&nbsp;import lombok.AllArgsConstructor;
+<i class="no-highlight">5</i>&nbsp;import lombok.Getter;
+<i class="no-highlight">6</i>&nbsp;import lombok.NoArgsConstructor;
+<i class="no-highlight">7</i>&nbsp;import lombok.Setter;
+<i class="no-highlight">8</i>&nbsp;
+<i class="no-highlight">9</i>&nbsp;import javax.persistence.*;
+<i class="no-highlight">10</i>&nbsp;import java.util.ArrayList;
+<i class="no-highlight">11</i>&nbsp;import java.util.List;
+<i class="no-highlight">12</i>&nbsp;import java.util.UUID;
+<i class="no-highlight">13</i>&nbsp;@Getter
+<b class="fc"><i class="no-highlight">14</i>&nbsp;@Setter</b>
+<b class="nc"><i class="no-highlight">15</i>&nbsp;@NoArgsConstructor</b>
+<b class="nc"><i class="no-highlight">16</i>&nbsp;@AllArgsConstructor</b>
+<i class="no-highlight">17</i>&nbsp;@Entity
+<i class="no-highlight">18</i>&nbsp;@Table(name = &quot;categories&quot;)
+<i class="no-highlight">19</i>&nbsp;@JsonIgnoreProperties({&quot;hibernateLazyInitializer&quot;, &quot;handler&quot;})
+<i class="no-highlight">20</i>&nbsp;public class Category {
+<b class="fc"><i class="no-highlight">21</i>&nbsp;    @Id</b>
+<b class="fc"><i class="no-highlight">22</i>&nbsp;    private String id = UUID.randomUUID().toString();</b>
+<b class="nc"><i class="no-highlight">23</i>&nbsp;    private String name;</b>
+<i class="no-highlight">24</i>&nbsp;
+<b class="fc"><i class="no-highlight">25</i>&nbsp;    @OneToMany(targetEntity = Product.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)</b>
+<i class="no-highlight">26</i>&nbsp;    @JoinColumn(name = &quot;category_id&quot;, referencedColumnName = &quot;id&quot;)
+<b class="fc"><i class="no-highlight">27</i>&nbsp;    private List&lt;Product&gt; products = new ArrayList&lt;&gt;();</b>
+<i class="no-highlight">28</i>&nbsp;
+<b class="fc"><i class="no-highlight">29</i>&nbsp;    public Category(String id, String name) {</b>
+<b class="fc"><i class="no-highlight">30</i>&nbsp;        this.id = id;</b>
+<b class="fc"><i class="no-highlight">31</i>&nbsp;        this.name = name;</b>
+<i class="no-highlight">32</i>&nbsp;    }
+<i class="no-highlight">33</i>&nbsp;
+<i class="no-highlight">34</i>&nbsp;}
+</div>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+        var codeBlock = document.getElementById('sourceCode');
+
+        if (codeBlock) {
+            hljs.highlightBlock(codeBlock);
+        }
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-02-04 14:06</div>
+</div>
+</body>
+</html>
