@@ -13,7 +13,7 @@ The project consolidates the following concepts from the core training modules:
 * API Development (Spring Boot)
 * Automated Testing (JUnit, Mockito)
 
-The project consists of a Spring Boot API, produced with full CRUD (Create, Read, Updated and Delete) functionallity. The API is fully capable of handling HTTP requests and commuincates with a local database (MySQL).
+The project consists of a Spring Boot API, produced with full CRUD (Create, Read, Updated and Delete) functionality. The API is fully capable of handling HTTP requests and communicates with a local database (MySQL).
 
 ### About the API
 
@@ -122,18 +122,17 @@ The following CRUD functionality is specified for each class
 > 
 <a href="Order CRUD Functionality"><img src="https://raw.githubusercontent.com/M-AliFida/QA-practical-spring-project/develop/Screenshots/CRUD%20Functionality/Order%20CRUD.png" width="500" ></a>
 
-
 For a comprehensive understanding of the API including field constraints, parameters and response messages, see [API Documentation](https://github.com/M-AliFida/QA-practical-spring-project/blob/develop/Documentation/API%20Documentation.pdf)
 
 ### Demonstration of API using Postman
 
-This demonstration aims to show how a typical user use case of the Supermarket Management System. It is recommended you view the following screenshots with their [Corresponding JSON files](https://github.com/M-AliFida/QA-practical-spring-project/tree/develop/Screenshots/API%20Requests/JSON%20Files%20(Results%20Output%20for%20API%20Calls)).
+This demonstration aims to show how a typical use case of the Supermarket Management System. It is recommended you view the following screenshots with their [corresponding JSON files](https://github.com/M-AliFida/QA-practical-spring-project/tree/develop/Screenshots/API%20Requests/JSON%20Files%20(Results%20Output%20for%20API%20Calls)).
 
 <hr>
 
 #### Creating and reading user data
 
-The first thing we may want to do is to register a shopper ('User'), in order to add their details on the system.
+The first thing we may want to do is to register a shopper ('User') in order to add their details on the system
 
 <a href="user-create"><img src="https://raw.githubusercontent.com/M-AliFida/QA-practical-spring-project/develop/Screenshots/API%20Requests/user-create.png" width="1000" ></a>
 
@@ -147,7 +146,7 @@ We can then read the user data, either using the user `id` (which, in this case 
 
 Note. *You can create multiple users within the system.*
 
-You may notice above that the shopper data generated above has an empty list of orders ("orders: []"). This is becase the shopper has not made an order yet. The system *auto-generates* orders: when a shopper purchases products, an order becomes generated.
+You may notice above that the shopper data generated above has an empty list of orders ("orders: []"). This is because the shopper has not made an order yet. The system *auto-generates* orders: when a shopper purchases products, an order becomes generated.
 
 In order to purchase products, we first need to add them. We can generate products both within categories, or on their own.
 
@@ -159,19 +158,21 @@ First, let's verify that we have no categories within our database
 
 <a href="category-read-all-no-found"><img src="https://raw.githubusercontent.com/M-AliFida/QA-practical-spring-project/develop/Screenshots/API%20Requests/category-read-all-no-found.png" width="1000" ></a>
 
-We then create a new category called `NFTs`, which have three products inside (`Robotos`, `HBots`, `Bored Ape Yacht Club`) that are priced different (`100`, `1000` and `10000` respectively).
+We then create a new category called `NFTs`, which have three products inside (`Robotos`, `HBots`, `Bored Ape Yacht Club`) that are priced different (`100`, `1000` and `10000` respectively)
 
-We can then read our category data, again, by either using the category `id` (`c69bcb3a-7a98-46f0-a2b8-4c5d8a6aeeee`)...
+<a href="category-create-with-products"><img src="https://raw.githubusercontent.com/M-AliFida/QA-practical-spring-project/develop/Screenshots/API%20Requests/category-create-with-products.png" width="1000" ></a>
+
+We can then read our category data, again, by either using the category `id` (`c69bcb3a-7a98-46f0-a2b8-4c5d8a6aeeee`) ...
 
 <a href="category-read-ID"><img src="https://raw.githubusercontent.com/M-AliFida/QA-practical-spring-project/develop/Screenshots/API%20Requests/category-read-ID.png" width="1000" ></a>
 
-... or listing all categories. 
+... or by listing all categories. 
 
 <a href="category-read-all"><img src="https://raw.githubusercontent.com/M-AliFida/QA-practical-spring-project/develop/Screenshots/API%20Requests/category-read-all.png" width="1000" ></a>
 
 Note. *You can create multiple categories with multiple products.*
 
-Our products are automatically created along with our category. This allows us to manipulate this data seperately. **This is a good example of how JPA works.**
+Our products are automatically created along with our category. This allows us to manipulate this data separately. **This is a good example of how JPA works.**
 
 In order to read products, we can use either the product `id` (`ba81cd8e-81ab-4149-a8c4-6be6df971d28`) ...
 
@@ -183,19 +184,19 @@ In order to read products, we can use either the product `id` (`ba81cd8e-81ab-41
 
 <hr>
 
-#### Creating categories and products seperately
+#### Creating categories and products separately
 
 We can create a product on its own, with a respective price
 
 <a href="product-create"><img src="https://raw.githubusercontent.com/M-AliFida/QA-practical-spring-project/develop/Screenshots/API%20Requests/product-create.png" width="1000" ></a>
 
-We can also empty category, after which we can add products to that category
+We can also create an empty category, after which we can add products to that category
 
 <a href="category-create-no-products"><img src="https://raw.githubusercontent.com/M-AliFida/QA-practical-spring-project/develop/Screenshots/API%20Requests/category-create-no-products.png" width="1000" ></a>
 
 We can see that the products list is empty ("products: []").
 
-We can then add any number our products (`Eggs` and `Milk`) to the `groceries` category by using the `categoryID` (`7ad2f647-22b4-47af-828a-1f5286753bef`).
+We can then add any number our products (`Eggs` and `Milk`) to the `groceries` category by using the `categoryID` (`7ad2f647-22b4-47af-828a-1f5286753bef`)
 
 <a href="category-create-products-ID"><img src="https://raw.githubusercontent.com/M-AliFida/QA-practical-spring-project/develop/Screenshots/API%20Requests/category-create-products-ID.png" width="1000" ></a>
 
@@ -205,7 +206,7 @@ We can then add any number our products (`Eggs` and `Milk`) to the `groceries` c
 
 As we now have a user and categories of products, we can now make a purchase. 
 
-This is done through the use of the user `id` (`1`) and `productID` (`9c62bf4c-30be-4101-8305-3786f42758d0`). We can state the quantites of the products being purchased
+This is done through the use of the user `id` (`1`) and `productID` (`9c62bf4c-30be-4101-8305-3786f42758d0`). We can state the quantities of the products being purchased
 
 <a href="product-create-purchase-order"><img src="https://raw.githubusercontent.com/M-AliFida/QA-practical-spring-project/develop/Screenshots/API%20Requests/product-create-purchase-order.png" width="1000" ></a>
 
@@ -253,19 +254,39 @@ Both unit and integration tests were carried out. <br>
 
 The overall test coverage (including Class %, Method % and Line %) of all the test files is
 
-<a href="Test Coverage"><img src="https://raw.githubusercontent.com/M-AliFida/QA-practical-spring-project/develop/Screenshots/Test%20Coverage/Test%20Coverage.png" width="1000" ></a>
+<a href="Test Coverage"><img src="https://github.com/M-AliFida/QA-practical-spring-project/blob/develop/Screenshots/Test%20Coverage/Test%20Coverage.png?raw=true" width="1000" ></a>
+
+You can also view the comprehensive [testing coverage report](https://m-alifida.github.io/QA-testing-coverage-report/index.html)
 
 ## Final Thoughts
 
 > Why are we doing this?
 
-The project helps to consolidate the learning material taught during the QA Academy Software Development Bootcamp through practical application. There is tremendous value in learning how to implement a REST API, as it an helps me to upskill the basic principles, fundamentals, syntax and applications of Java that I have acquired throughout the Bootcamp.
+The project helps to consolidate the learning material taught during the QA Academy Software Development Bootcamp through practical application. There is also tremendous value in learning how to implement a REST API, as it is commonly used in web development.
+
+Another reason for doing this project is getting used to Agile practices. By updating our process on a Jira Scrum board and taking part in daily 'sprint' meetings, we get to experience an important part of what a software developer does on a day-to-day basis.
 
 > How I expected the challenge to go
 
+I was fairly confident that I would be able to at-least complete the MVP requirements. This was because we had excellent tutors that gave us a solid foundation in how to set up an API using Spring Boot. 
+
+Still, there were some areas that I was not too keen on. This was mostly concerning Jira, which I find to be a bit cumbersome. I felt like using Jira was overkill for such a small project. I was also really scared that I would mess up my branches on Git.
+
 > What went well? / What didn't go as planned?
 
+I found the whole process of writing code for the API extremely enjoyable. I even enjoyed the testing aspect of the project, as this showed me some glaring issues with the code-- which is, after all, the whole purpose of testing code. I also feel that my branching strategy on Git was somewhat good and I really enjoyed 'pushing', 'pulling' and 'merging' different versions of my code. I have a new sense of appreciation for the powerful capabilities available on Git.
+
+In terms of what didn't go as planned, I really did not enjoy using Jira. I feel like my user experience stories were lacking and a lot of them were arbitrary. Whilst I did enjoy the sprint meetings, I felt that we had too many check-ins for such a small project (three check-ins a day). I would also forget to update my Jira board everyday. 
+
+I had lost my initial Postman API call screenshots and so that took my while to redo. 
+
+Finally, I had problems with both Java and Maven which I had to solve by doing a clean reinstall of the JDK, JRE and even XCode Tools for my MacOS. Running Lombok on Eclipse was a real pain and I considered writing my code with standard getters and setters and lack of Lombok functionality. Although, this was subsequently solved be using IntelliJ where the issues I was having were easier to spot (and hence resolve!)
+
 > Possible improvements for future revisions of the project
+
+- Create a front-end, diverting the focus more towards user experience. This will allow me to add functionality such as providing alerts to users based on their orders, allowing users to manage their registered accounts or even adding an AI chatbot to address user queries and troubleshoot basic concerns.
+- Deployment the application to the cloud-- allows for me to get familiar with Azure/AWS and apply some cloud-based tools/services that I have learnt about during the course (microservices, dockerisation etc.). If I were to have greater aspirations for the project, working on the cloud would provide me with advantages of agility, elasticity and scalability.
+- Get better at using Jira and applying the principles of Scrum. This has been a weakness of mine. No doubt, there are great merits in using the Agile methodology during the Software Development Life Cycle (SDLC).
 
 ## Screenshots + Jira
 
