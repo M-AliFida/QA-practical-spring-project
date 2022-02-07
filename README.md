@@ -288,9 +288,12 @@ Finally, I had problems with both Java and Maven which I had to solve by doing a
 - Deployment the application to the cloud-- allows for me to get familiar with Azure/AWS and apply some cloud-based tools/services that I have learnt about during the course (microservices, dockerisation etc.). If I were to have greater aspirations for the project, working on the cloud would provide me with advantages of agility, elasticity and scalability.
 - Get better at using Jira and applying the principles of Scrum. This has been a weakness of mine. No doubt, there are great merits in using the Agile methodology during the Software Development Life Cycle (SDLC).
 
-## Screenshots + Jira
+## Screenshots, Additional Documentation + Jira
 
 * [Screenshots showing your postman requests and the output from the API](#demonstration-of-api-using-postman)
 * [Screenshots of your database to prove that data is being persisted](#data-persistence)
 * [Screenshot of your test results, including coverage report](#testing-coverage)
+* [Risk Assessment](https://github.com/M-AliFida/QA-practical-spring-project/blob/main/Documentation/Risk%20Assessment.pdf)
+* [Class Diagram](https://github.com/M-AliFida/QA-practical-spring-project/blob/main/Documentation/Diagrams/Class%20Diagram.jpg)
+* [Entity-Relationship Diagram](https://github.com/M-AliFida/QA-practical-spring-project/blob/main/Documentation/Diagrams/Entity-Relationship%20DIagram%20(super_market).jpg)
 * [Jira Board](https://m-a-f.atlassian.net/jira/software/projects/DFE/boards/1)
